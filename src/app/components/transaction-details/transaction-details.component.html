@@ -1,0 +1,36 @@
+<div class="container">
+  <a [routerLink]="['/']" class="btn btn-primary mb-5">Go Home</a>
+  <div class="container">
+    <ul class="nav nav-pills nav-justified">
+      <li *ngFor="let type of types; let i = index" class="nav-item">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          [routerLink]="['./']"
+          [queryParams]="{ tab: i }"
+          (click)="handleClick(i)"
+          >{{ type | titlecase }}</a
+        >
+      </li>
+    </ul>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Company</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of filteredList">
+            <td>{{ transaction.name.first }} {{ transaction.name.last }}</td>
+            <td>{{ transaction.company }}</td>
+            <td>{{ transaction.amount }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

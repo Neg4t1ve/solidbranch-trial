@@ -1,0 +1,40 @@
+<div class="card border-info bg-info mb-3 text-white">
+  <div class="card-header text-center">
+    <h2 class="display-3">Welcome</h2>
+  </div>
+  <div class="card-body">
+    <p class="card-text h3">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </p>
+    <div class="text-center">
+      <button class="btn btn-primary font-weight-bold" (click)="handleToggle()">
+        See transactions
+      </button>
+    </div>
+  </div>
+  <div class="card-footer h4 text-center">
+    You have {{ totalAmount }} transactions
+  </div>
+</div>
+<div *ngIf="toggle" class="container">
+  <div class="row row-cols-1 row-cols-md-2">
+    <div *ngFor="let type of types; let i = index" class="col mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ type | titlecase }}</h5>
+          <p class="card-text">Amout: {{ getAmount(type) }}</p>
+          <div class="text-right">
+            <a
+              href="#"
+              [routerLink]="['/navigator']"
+              [queryParams]="{ tab: i }"
+              class="btn btn-primary font-weight-bold"
+              >See all</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
